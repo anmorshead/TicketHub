@@ -21,19 +21,19 @@ namespace TicketHub
         public string Phone { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Quantity is required.")]
-        [Range(1, 100, ErrorMessage = "Quantity must be between 1 and 100.")]
-        public int Quantity { get; set; } = 0;
+        [Range(1, 6, ErrorMessage = "Quantity must be between 1 and 6.")]
+        public int Quantity { get; set; } = 1;
 
         [Required(ErrorMessage = "Credit card number is required.")]
         [CreditCard(ErrorMessage = "Invalid credit card number.")]
         public string CreditCard { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Expiration date is required.")]
-        [RegularExpression(@"^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$", ErrorMessage = "Expiration must be in MM/YY or MM/YYYY format.")]
+        [RegularExpression(@"^(0[1-9]|1[0-2])\/\d{2}$", ErrorMessage = "Expiration must be in MM/YY format.")]
         public string Expiration { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Security code is required.")]
-        [RegularExpression(@"^\d{3,4}$", ErrorMessage = "Security code must be 3 or 4 digits.")]
+        [RegularExpression(@"^\d{3}$", ErrorMessage = "Security code must be 3 digits.")]
         public string SecurityCode { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Address is required.")]
@@ -46,7 +46,7 @@ namespace TicketHub
         public string Province { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Postal code is required.")]
-        [RegularExpression(@"^[A-Za-z0-9\s-]{5,10}$", ErrorMessage = "Invalid postal code format.")]
+        [RegularExpression(@"^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$", ErrorMessage = "Invalid postal code format (e.g., A1A 1A1).")]
         public string PostalCode { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Country is required.")]
